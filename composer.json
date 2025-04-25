@@ -1,0 +1,44 @@
+{
+    "name": "otezvikentiy/codeception-symfony-http-client-mock",
+    "description": "Codeception Module for Mocking HttpClient in Symfony",
+    "version": "1.0.0",
+    "stability": "stable",
+    "minimum-stability": "stable",
+    "keywords": [
+        "symfony",
+        "codeception",
+        "http-client",
+        "mock",
+        "tests"
+    ],
+    "authors": [
+        {
+            "name": "l.groshev",
+            "email": "OtezVikentiy@gmail.com",
+            "homepage": "https://otezvikentiy.tech",
+            "role": "Maintainer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/OtezVikentiy/codeception-symfony-http-client-mock/issues"
+    },
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "codeception/codeception": "^5.0",
+        "symfony/http-client": "^6.3|^7.0"
+    },
+    "suggest": {
+        "symfony/framework-bundle": "For Symfony integration",
+        "codeception/module-symfony": "For Symfony module"
+    },
+    "autoload": {
+        "psr-4": {
+            "OtezVikentiy\\CodeceptionHttpMock\\": "src/"
+        }
+    },
+    "extra": {
+        "codeception-helper": "src/HttpMockModule.php"
+    }
+}

@@ -1,0 +1,14 @@
+when@test:
+    services:
+        _defaults:
+            public: true
+
+        # turn off project factory
+        # replace this path with the path to your factory
+        App\Infrastructure\HttpClient\HttpClientFactory:
+            class: stdClass
+
+        # replace the client with mock
+        http_client:
+            class: App\Tests\Support\Helper\HttpClient\HttpClientMock
+            factory: ['App\Tests\Support\Helper\HttpClient\HttpClientMock', 'getInstance']
