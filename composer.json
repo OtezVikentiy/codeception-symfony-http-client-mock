@@ -1,7 +1,7 @@
 {
     "name": "otezvikentiy/codeception-symfony-http-client-mock",
     "description": "Codeception Module for Mocking HttpClient in Symfony",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "stability": "stable",
     "minimum-stability": "stable",
     "keywords": [
