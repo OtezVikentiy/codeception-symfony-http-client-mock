@@ -13,7 +13,8 @@ class RequestExpectation
 
     public function __construct(
         private readonly string $method,
-        private readonly string $url
+        private readonly string $url,
+        private readonly bool $passInCaseUnused
     ) {}
 
     public function withBody(string $body): self
@@ -77,5 +78,10 @@ class RequestExpectation
     public function __toString(): string
     {
         return sprintf("%s %s", $this->method, $this->url);
+    }
+
+    public function isPassInCaseUnused(): bool
+    {
+        return $this->passInCaseUnused;
     }
 }

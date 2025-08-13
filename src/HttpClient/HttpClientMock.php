@@ -27,9 +27,9 @@ class HttpClientMock implements HttpClientInterface
         self::$instance = null;
     }
 
-    public function expect(string $method, string $url): RequestExpectation
+    public function expect(string $method, string $url, bool $passInCaseUnused): RequestExpectation
     {
-        $expectation = new RequestExpectation($method, $url);
+        $expectation = new RequestExpectation($method, $url, $passInCaseUnused);
         $this->expectations[] = $expectation;
         return $expectation;
     }
@@ -52,9 +52,22 @@ class HttpClientMock implements HttpClientInterface
     {
         if (!empty($this->expectations)) {
             $expectations = array_values($this->expectations);
+            $leftExpectations = [];
+
+            /** @var RequestExpectation $expectation */
+            foreach ($expectations as $expectation) {
+                if (!$expectation->isPassInCaseUnused()) {
+                    $leftExpectations[] = $expectation;
+                }
+            }
+
+            if (empty($leftExpectations)) {
+                return;
+            }
+
             throw new \RuntimeException(sprintf(
                 "Unmet HTTP expectations. Data [%s]",
-                (string) $expectations[0]
+                (string) $leftExpectations[0]
             ));
         }
     }

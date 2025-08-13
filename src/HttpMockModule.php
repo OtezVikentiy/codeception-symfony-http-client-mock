@@ -28,8 +28,8 @@ class HttpMockModule extends Module
         }
     }
 
-    public function expectHttpRequest(string $method, string $url): RequestExpectation
+    public function expectHttpRequest(string $method, string $url, bool $passInCaseUnused): RequestExpectation
     {
-        return HttpClientMock::getInstance()->expect($method, $url);
+        return HttpClientMock::getInstance()->expect($method, $url, $passInCaseUnused);
     }
 }
