@@ -51,9 +51,10 @@ class HttpClientMock implements HttpClientInterface
     public function verifyAllExpectations(): void
     {
         if (!empty($this->expectations)) {
+            $expectations = array_values($this->expectations);
             throw new \RuntimeException(sprintf(
-                "%d unmet HTTP expectations",
-                count($this->expectations)
+                "Unmet HTTP expectations. Data [%s]",
+                (string) $expectations[0]
             ));
         }
     }

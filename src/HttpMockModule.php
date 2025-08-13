@@ -23,7 +23,9 @@ class HttpMockModule extends Module
 
     public function _after(TestInterface $test): void
     {
-        HttpClientMock::getInstance()->verifyAllExpectations();
+        if ($test->getResultAggregator()->wasSuccessful()) {
+            HttpClientMock::getInstance()->verifyAllExpectations();
+        }
     }
 
     public function expectHttpRequest(string $method, string $url): RequestExpectation
